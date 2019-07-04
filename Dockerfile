@@ -6,7 +6,7 @@ FROM httpd
 
 # For testing purposes only
 # docker build -t papyruscs .
-# docker run -d -p 8080:80 papyruscs
+# docker run -d -p 8080:80 -v E:/Bedrock:/MyWorld  papyruscs
 # check http://localhost:8080/
 
 # Set environment variables
