@@ -35,8 +35,8 @@ RUN chmod +x /papyruscs/PapyrusCs
 
 # Lets copy the script to the target location
 COPY generate_map.sh /usr/local/bin/generate_map.sh 
-RUN chmod +x /usr/local/bin/generate_map.sh 
+RUN chmod +x /usr/local/bin/generate_map.sh
 
 # This would be under site.tld/map/index.html 
 EXPOSE 80
-CMD ["httpd-foreground", "generate_map.sh]
+CMD ["httpd-foreground", "generate_map.sh"]
