@@ -12,7 +12,7 @@ cp -r /MyWorld /CurrentWorld
 
 # Generate the map save to a log file and pipe to stdout
 echo GENERATING MAP
-/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 0 >&1
-# removed /var/log/papyrus_overworld.log temporarily and piping to stdout
+/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 0
+# removed /var/log/papyrus_overworld.log temporarily and piping to stdout >&1
 #/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 1 > /var/log/papyrus_nether.log >&1
 #/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 2 > /var/log/papyrus_end.log >&1
