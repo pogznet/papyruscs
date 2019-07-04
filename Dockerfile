@@ -3,6 +3,7 @@ FROM httpd
 # TODO: 
 # 	Add support for Nether and End
 #	Run the generate map every hour
+#	Using entrypoint takes forever before the health check starts maybe move it after cmd
 
 # For testing purposes only
 # docker build -t papyruscs .
@@ -28,17 +29,13 @@ RUN wget https://github.com/mjungnickel18/papyruscs/releases/download/v0.3.5/pap
 RUN unzip papyruscs-dotnetcore-0.3.5-linux64.zip -d /papyruscs
 RUN chmod +x /papyruscs/PapyrusCs
 
-# Generate it to the htdoc root directory (moving this to a script so we could run it at given intervals)
-#RUN /papyruscs/PapyrusCs --world="/MyWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 0
-#RUN /papyruscs/PapyrusCs --world="/MyWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 1
-#RUN /papyruscs/PapyrusCs --world="/MyWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 2
-
 # Lets copy the script to the target location
 COPY generate_map.sh /usr/local/bin/generate_map.sh 
 RUN chmod +x /usr/local/bin/generate_map.sh
 
-ENTRYPOINT ["generate_map.sh"]
-
 # This would be under site.tld/map/index.html 
 EXPOSE 80
 CMD ["httpd-foreground"]
+
+# Moved entrypoint so that the http would run first
+ENTRYPOINT ["generate_map.sh"]
