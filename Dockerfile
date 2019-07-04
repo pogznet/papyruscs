@@ -38,4 +38,4 @@ EXPOSE 80
 CMD ["httpd-foreground"]
 
 # Moved entrypoint so that the http would run first
-CMD ["generate_map.sh"]
+RUN ["generate_map.sh"]
