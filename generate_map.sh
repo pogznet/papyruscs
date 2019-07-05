@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo STARTING
 echo $(date)
 
 echo CLEANING UP CURRENT WORLD
@@ -12,7 +13,23 @@ cp -r /MyWorld /CurrentWorld
 
 # Generate the map save to a log file and pipe to stdout
 echo GENERATING MAP
-/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 0
-# removed /var/log/papyrus_overworld.log temporarily and piping to stdout >&1
-#/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 1 > /var/log/papyrus_nether.log >&1
-#/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 2 > /var/log/papyrus_end.log >&1
+/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 0 > /var/log/papyrus_overworld.log >&1
+
+# Check if we should generate nether
+if [ $LevelNether -eq 1 ]
+	then
+		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 1 > /var/log/papyrus_nether.log >&1
+else
+	echo NOT GENERATING NETHER MAP 
+fi
+
+# Check if we should generate nether
+if [ $LevelNether -eq 1 ]
+	then
+		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 2 > /var/log/papyrus_end.log >&1
+else
+	echo NOT GENERATING END MAP 
+fi
+
+echo DONE 
+echo $(date)
