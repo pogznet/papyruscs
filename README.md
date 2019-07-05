@@ -13,6 +13,16 @@ docker run -d -p 8080:80 \
     papyruscs
 ```
 
+## Environment variables
+
+`LEVEL_NETHER` (1 or 0) to render nether or not 
+`LEVEL_END` (1 or 0) to render end level or not 
+`CONFIG_THREADS`
+`CONFIG_OUTFILE`
+`CONFIG_QUALITY`
+
+See default values and accepted parameters in https://github.com/mjungnickel18/papyruscs#usage
+
 ## Under the hood
 
 ### The Dockerfile

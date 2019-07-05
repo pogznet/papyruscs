@@ -1,1 +1,1 @@
-0 * * * * /bin/bash -c "/usr/local/bin/generate_map.sh"
+0 * * * * /bin/bash -c "/usr/local/bin/generate_map.sh" > /var/log/generate_map.log
