@@ -46,6 +46,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Transferred the cron to a file and installs it via this command 
 # 	from https://stackoverflow.com/questions/35722003/cron-job-not-auto-runs-inside-a-docker-container
 COPY cronjob_file /etc/cron.d/cronjob_file
+RUN chmod 0600 /etc/cron.d/cronjob_file
+# Do i also need to chmod the /var/spool/cron/crontabs/root file? 
 RUN crontab /etc/cron.d/cronjob_file
 
 # This would be under site.tld/map/index.html 
