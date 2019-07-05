@@ -40,8 +40,9 @@ RUN chmod +x /usr/local/bin/generate_map.sh
 EXPOSE 80
 ENTRYPOINT ["httpd-foreground"]
 
-# Add cront job to root
+# Add cront job to root and start the service
 RUN echo "0 * * * * /bin/bash -c \"/usr/local/bin/generate_map.sh\"" >> /var/spool/cron/crontabs/root 
+RUN service cron start
 
 # Moved entrypoint so that the http would run first
 CMD ["generate_map.sh"]
