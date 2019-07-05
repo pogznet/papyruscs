@@ -36,13 +36,18 @@ RUN chmod +x /papyruscs/PapyrusCs
 COPY generate_map.sh /usr/local/bin/generate_map.sh 
 RUN chmod +x /usr/local/bin/generate_map.sh
 
-# This would be under site.tld/map/index.html 
-EXPOSE 80
-ENTRYPOINT ["httpd-foreground"]
+# Copy the entrypoint.sh script 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Add cront job to root and start the service
 RUN echo "0 * * * * /bin/bash -c \"/usr/local/bin/generate_map.sh\"" >> /var/spool/cron/crontabs/root 
-RUN service cron start
+#CMD service cron start (add this to the entrypoint script) 
+
+# This would be under site.tld/map/index.html 
+EXPOSE 80
+ENTRYPOINT ["entrypoint.sh"]
 
 # Moved entrypoint so that the http would run first
-CMD ["generate_map.sh"]
+# Apparently this would not work as it is run on a separate container 
+#CMD ["generate_map.sh"] (add this to the entrypoint script)
