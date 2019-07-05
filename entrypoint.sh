@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo RUNNING HTTPD SERVICE
 
@@ -11,5 +11,7 @@ echo RUNNING CRON SERVICE
 #touch /etc/crontab /etc/cron.*/*
 
 service cron start
+
+echo RUNNING MAP GENERATOR FOR THE FIRST TIME
 
 generate_map.sh
