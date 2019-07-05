@@ -1,0 +1,1 @@
+0 * * * * /bin/bash -c "/usr/local/bin/generate_map.sh"

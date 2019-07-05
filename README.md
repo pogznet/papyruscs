@@ -27,3 +27,5 @@ Starts off by printing the date and cleaning up the current world directory (don
 I am not an expert in Dockerizing services so please do cut me some slack if you're going to use this in your deployment. I provide no support whatsoever on this script and while its poorly written, it functions to perform what I need. 
 
 I dont know how often the PapyrusCs team updates their code, so it is possible that the file being downloaded here is an old version. I will update it when I have the time.
+
+Its is also possilbe that the script is suffering from an out of memory error. Check `dmesg` for any messages stating killed processes.

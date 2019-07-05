@@ -41,8 +41,12 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Add cront job to root and start the service
-RUN echo "0 * * * * /bin/bash -c \"/usr/local/bin/generate_map.sh\"" >> /var/spool/cron/crontabs/root 
+#RUN echo "0 * * * * /bin/bash -c \"/usr/local/bin/generate_map.sh\"" >> /var/spool/cron/crontabs/root 
 #CMD service cron start (add this to the entrypoint script) 
+# Transferred the cron to a file and installs it via this command 
+# 	from https://stackoverflow.com/questions/35722003/cron-job-not-auto-runs-inside-a-docker-container
+COPY cronjob_file /etc/cron.d/cronjob_file
+RUN crontab /etc/cron.d/cronjob_file
 
 # This would be under site.tld/map/index.html 
 EXPOSE 80
