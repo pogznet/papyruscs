@@ -8,10 +8,10 @@ echo RUNNING CRON SERVICE
 
 service cron start
 
-echo RUNNING HTTPD SERVICE
-
-httpd-foreground &
-
 echo RUNNING MAP GENERATOR FOR THE FIRST TIME
 
 generate_map.sh
+
+echo RUNNING HTTPD SERVICE
+
+httpd-foreground
