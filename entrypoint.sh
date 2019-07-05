@@ -1,9 +1,5 @@
 #!/bin/sh
 
-echo RUNNING HTTPD SERVICE
-
-httpd-foreground
-
 echo RUNNING CRON SERVICE 
 
 # fix link-count, as cron is being a pain, and docker is making hardlink count >0 (very high)
@@ -11,6 +7,10 @@ echo RUNNING CRON SERVICE
 #touch /etc/crontab /etc/cron.*/*
 
 service cron start
+
+echo RUNNING HTTPD SERVICE
+
+httpd-foreground &
 
 echo RUNNING MAP GENERATOR FOR THE FIRST TIME
 
