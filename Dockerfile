@@ -1,16 +1,15 @@
 FROM httpd
 
 # TODO: 
-# 	Add support for Nether and End
-#	Run the generate map every hour
-#	Using entrypoint takes forever before the health check starts maybe move it after cmd
+# 	DONE - Add support for Nether and End
+#	DONE - Run the generate map every hour
 
 # For testing purposes only
 # docker build -t papyruscs .
 # docker run -d -p 8080:80 -v E:/Bedrock:/MyWorld  papyruscs
 # check http://localhost:8080/
 
-# Additional note
+# IMPORTANT NOTE: 
 # /usr/local/apache2/htdocs/ must be pre-seeded with an existing generated map
 # 	for any container failure, this can be a volume mounted as /usr/local/apache2/htdocs/
 
@@ -42,7 +41,7 @@ EXPOSE 80
 ENTRYPOINT ["httpd-foreground"]
 
 # Add cront job to root
-echo "0 * * * * /usr/local/bin/generate_map.sh" >> /var/spool/cron/crontabs/root 
+RUN echo "0 * * * * /usr/local/bin/generate_map.sh" >> /var/spool/cron/crontabs/root 
 
 # Moved entrypoint so that the http would run first
 CMD ["generate_map.sh"]
