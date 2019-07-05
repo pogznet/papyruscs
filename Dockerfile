@@ -35,7 +35,7 @@ RUN chmod +x /usr/local/bin/generate_map.sh
 
 # This would be under site.tld/map/index.html 
 EXPOSE 80
-CMD ["httpd-foreground"]
+ENTRYPOINT ["httpd-foreground"]
 
 # Moved entrypoint so that the http would run first
-RUN ["generate_map.sh"]
+CMD ["generate_map.sh"]
