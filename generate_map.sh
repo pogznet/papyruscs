@@ -24,7 +24,7 @@ else
 fi
 
 # Check if we should generate nether
-if [ $LevelNether -eq 1 ]
+if [ $LevelEnd -eq 1 ]
 	then
 		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" -d 2 > /var/log/papyrus_end.log >&1
 else

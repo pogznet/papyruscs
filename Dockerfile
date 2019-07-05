@@ -6,7 +6,7 @@ FROM httpd
 
 # For testing purposes only
 # docker build -t papyruscs .
-# docker run -d -p 8080:80 -v E:/Bedrock:/MyWorld  papyruscs
+# docker run -d -p 8080:80 -v /your/minecraft/world/directory:/MyWorld -v /your/http/root/directory:/usr/local/apache2/htdocs/  papyruscs
 # check http://localhost:8080/
 
 # IMPORTANT NOTE: 
@@ -41,7 +41,7 @@ EXPOSE 80
 ENTRYPOINT ["httpd-foreground"]
 
 # Add cront job to root
-RUN echo "0 * * * * /usr/local/bin/generate_map.sh" >> /var/spool/cron/crontabs/root 
+RUN echo "0 * * * * /bin/bash -c \"/usr/local/bin/generate_map.sh\"" >> /var/spool/cron/crontabs/root 
 
 # Moved entrypoint so that the http would run first
 CMD ["generate_map.sh"]
