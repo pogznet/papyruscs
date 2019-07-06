@@ -12,7 +12,7 @@ service cron start
 
 echo RUNNING MAP GENERATOR FOR THE FIRST TIME
 
-generate_map.sh
+generate_map.sh 2>&1
 
 echo RUNNING HTTPD SERVICE
 
