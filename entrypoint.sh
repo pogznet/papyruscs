@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # The environment variables are not loaded into cron. 
 # 	https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job
