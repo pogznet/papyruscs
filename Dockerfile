@@ -51,7 +51,7 @@ RUN crontab /etc/cron.d/root
 
 # The environment variables are not loaded into cron. 
 # 	https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job
-CMD declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
+RUN declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
 
 # This would be under site.tld/map/index.html 
 EXPOSE 80
