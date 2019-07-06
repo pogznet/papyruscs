@@ -45,9 +45,13 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Copy the cronjob file and install
 # 	https://stackoverflow.com/questions/35722003/cron-job-not-auto-runs-inside-a-docker-container
-COPY cronjob_file /etc/cron.d/cronjob_file
-RUN chmod 0600 /etc/cron.d/cronjob_file
-RUN crontab /etc/cron.d/cronjob_file
+COPY root /etc/cron.d/root
+RUN chmod 0600 /etc/cron.d/root
+RUN crontab /etc/cron.d/root
+
+# The environment variables are not loaded into cron. 
+# 	https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job
+CMD declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
 
 # This would be under site.tld/map/index.html 
 EXPOSE 80
