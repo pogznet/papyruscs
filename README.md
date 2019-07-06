@@ -29,7 +29,7 @@ See default values and accepted parameters in https://github.com/mjungnickel18/p
 The docker file just sets the environment variables if you also need to generate Nether and End maps, installs necessary dependencies and the application itself and calls the `entrypoint.sh` script which enables cron, generate map and lastly the httpd-foreground.
 
 ### The `generate_map.sh` script
-Starts off by printing the date and cleaning up the current world directory (dont worry this will not clean up your existing Minecraft world) and copies the working map (existing Minecraft world) to the current directory [1].  then runs the PapyrusCs application. This should log something in `/var/log/papyrus_*.log` so you could get back to checking it in the future.
+Starts off by printing the date and cleaning up the current world directory (dont worry this will not clean up your existing Minecraft world) and copies the working map (existing Minecraft world) to the current directory [1].  then runs the PapyrusCs application. This should log something in `/var/log/generate_map.log` so you could get back to checking it in the future.
 
 [1] Why are we doing this? This is due to an issue I filed in https://github.com/mjungnickel18/papyruscs/issues/10 
 
