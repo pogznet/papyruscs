@@ -18,8 +18,10 @@ echo GENERATING MAP
 /papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 0 > /var/log/papyrus_overworld.log
 
 # Check if we should generate nether
+one=1;
+
 echo GENERATING NETHER
-if [ $LEVEL_NETHER -eq 1 ]
+if [ $LEVEL_NETHER -eq $one ]
 	then
 		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 1 > /var/log/papyrus_nether.log
 else
@@ -28,7 +30,7 @@ fi
 
 # Check if we should generate end
 echo GENERATING END
-if [ $LEVEL_END -eq 1 ]
+if [ $LEVEL_END -eq $one ]
 	then
 		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 2 > /var/log/papyrus_end.log
 else
