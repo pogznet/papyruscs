@@ -49,10 +49,6 @@ COPY root /etc/cron.d/root
 RUN chmod 0600 /etc/cron.d/root
 RUN crontab /etc/cron.d/root
 
-# The environment variables are not loaded into cron. 
-# 	https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job
-RUN declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
-
 # This would be under site.tld/map/index.html 
 EXPOSE 80
 ENTRYPOINT ["entrypoint.sh"]
