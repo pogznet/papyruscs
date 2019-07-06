@@ -1,12 +1,13 @@
 #!/bin/bash
 
+echo CURRENT PID $$
+echo CHECKING ENV VARIABLES IF SET
+echo $LEVEL_NETHER, $LEVEL_END, $CONFIG_THREADS, $CONFIG_OUTFILE , $CONFIG_QUALITY
+
 # The environment variables are not loaded into cron. 
 # 	https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job
+echo WRITING ENV VARIABLES TO FILE
 declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
-
-echo CURRENT PID $$
-echo CHECKING ENV VARIABLES IF SET (IF THESE ARE BLANK, SOMETHING IS WRONG)
-echo $LEVEL_NETHER, $LEVEL_END, $CONFIG_THREADS, $CONFIG_OUTFILE , $CONFIG_QUALITY
 
 echo RUNNING CRON SERVICE 
 

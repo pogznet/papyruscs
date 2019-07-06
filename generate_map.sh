@@ -4,7 +4,7 @@ echo SETTING PATH
 PATH=/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 echo Current path: $PATH
 
-echo CHECKING ENV VARIABLES IF SET (IF THESE ARE BLANK, SOMETHING IS WRONG)
+echo CHECKING ENV VARIABLES IF SET
 echo $LEVEL_NETHER, $LEVEL_END, $CONFIG_THREADS, $CONFIG_OUTFILE , $CONFIG_QUALITY
 
 echo STARTING MAP GENERATION
