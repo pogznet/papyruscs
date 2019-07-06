@@ -1,5 +1,10 @@
 #!/bin/sh
 
+echo SETTING PATH
+PATH=/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+echo Current path: $PATH
+
 echo STARTING MAP GENERATION
 echo $(date)
 
@@ -7,34 +12,34 @@ echo CURRENT PID $$
 
 echo CLEANING UP CURRENT WORLD
 # Delete old stale map folders first
-rm -rf /CurrentWorld 
+rm -rf /CurrentWorld
 
 echo EXPORTING RUNNING WORLD
 # Copy the running world as current world
-cp -r /MyWorld /CurrentWorld 
+cp -r /MyWorld /CurrentWorld
 
 # Generate the map save to a log file and pipe to stdout
 echo GENERATING MAP
-/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 0
+/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -$
 
 # Check if we should generate nether
 one=1;
 
 echo GENERATING NETHER
 if [ $LEVEL_NETHER -eq $one ]
-	then
-		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 1 
+        then
+                /papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $$
 else
-	echo NOT GENERATING NETHER MAP 
+        echo NOT GENERATING NETHER MAP
 fi
 
 # Check if we should generate end
 echo GENERATING END
 if [ $LEVEL_END -eq $one ]
-	then
-		/papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $CONFIG_OUTFILE -q $CONFIG_QUALITY -d 2 
+        then
+                /papyruscs/PapyrusCs --world="/CurrentWorld/db" --output="/usr/local/apache2/htdocs/" --htmlfile="index.html" --threads $CONFIG_THREADS -f $$
 else
-	echo NOT GENERATING END MAP 
+        echo NOT GENERATING END MAP
 fi
 
 echo DONE WITH MAP GENERATION
