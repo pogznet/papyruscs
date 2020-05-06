@@ -31,8 +31,8 @@ RUN apt-get install -y zlib1g-dev unzip libgdiplus libc6-dev wget cron nano
 WORKDIR /papyruscs
 
 # Get PapyrusCs
-RUN wget https://github.com/mjungnickel18/papyruscs/releases/download/v0.3.6/papyruscs-dotnetcore-0.3.6-linux64.zip
-RUN unzip papyruscs-dotnetcore-0.3.6-linux64.zip -d /papyruscs
+RUN wget https://github.com/mjungnickel18/papyruscs/releases/download/v0.4.0/papyruscs-dotnetcore-0.4.0-linux64.zip
+RUN unzip papyruscs-dotnetcore-0.4.0-linux64.zip -d /papyruscs
 RUN chmod +x /papyruscs/PapyrusCs
 
 # Copy the script into the target location
